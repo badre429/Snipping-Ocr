@@ -10,7 +10,7 @@ namespace Snipping_OCR
 {
     public class OcrTesseract : IOcr
     {
-        public OcrResult Process(string filePath, string language = "eng")
+        public OcrResult Process(string filePath, string language = "eng+ara")
         {
             using (var pix = Pix.LoadFromFile(filePath))
             {
@@ -18,7 +18,7 @@ namespace Snipping_OCR
             }
         }
 
-        public OcrResult Process(Image image, string language = "eng")
+        public OcrResult Process(Image image, string language = "eng+ara")
         {
             using (var ms = new MemoryStream())
             {
@@ -31,11 +31,11 @@ namespace Snipping_OCR
             }
         }
 
-        private OcrResult ProcessProc(Pix pix, string language = "eng")
+        private OcrResult ProcessProc(Pix pix, string language = "eng+ara")
         {
             try
             {
-                using (var engine = new TesseractEngine(@"./tessdata", language, EngineMode.Default))
+                using (var engine = new TesseractEngine(@"./tessdata", language, EngineMode.LstmOnly))
                 {
                     using (var page = engine.Process(pix))
                     {

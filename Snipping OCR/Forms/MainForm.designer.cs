@@ -47,7 +47,10 @@
             this.notifyIcon.BalloonTipText = "Hola";
             this.notifyIcon.BalloonTipTitle = "OCR";
             this.notifyIcon.ContextMenuStrip = this.notifyMenu;
-            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Icon = new System.Drawing.Icon("edit_find.ico");
+
+            // this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+
             this.notifyIcon.Text = "OCR";
             this.notifyIcon.Visible = true;
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
@@ -70,8 +73,9 @@
             // 
             this.mnuEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.mnuEngine.Items.AddRange(new object[] {
-            "SpaceOCR",
-            "Tesseract"});
+                "Tesseract",
+                "SpaceOCR"
+            });
             this.mnuEngine.Name = "mnuEngine";
             this.mnuEngine.Size = new System.Drawing.Size(121, 23);
             // 
@@ -79,6 +83,8 @@
             // 
             this.mnuLanguageCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.mnuLanguageCombo.Items.AddRange(new object[] {
+                "Arabic+English",
+                "Arabic",
             "English",
             "Spanish"});
             this.mnuLanguageCombo.Name = "mnuLanguageCombo";

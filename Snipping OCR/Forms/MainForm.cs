@@ -76,8 +76,12 @@ namespace Snipping_OCR
 
         private void SetHotKeyFromConfig()
         {
-            _hotkey.Shift = _hotkey.Alt =_hotkey.Control = _hotkey.Windows = false;
+            _hotkey.Shift = _hotkey.Alt = _hotkey.Control = _hotkey.Windows = false;
             var hk = ConfigurationManager.AppSettings["Hotkey"];
+            if (string.IsNullOrEmpty(hk))
+            {
+                hk = "CTRL+m";
+            }
             var items = hk.Split('+');
             if (items.Length > 1)
             {
@@ -101,7 +105,7 @@ namespace Snipping_OCR
                     }
                 }
             }
-            _hotkey.KeyCode = (Keys)(int)items[items.Length-1][0];
+            _hotkey.KeyCode = (Keys)(int)items[items.Length - 1][0];
 
         }
 
@@ -188,7 +192,22 @@ namespace Snipping_OCR
 
         private void ProcessOcrImage(Image image)
         {
-            var lang = (string)mnuLanguageCombo.SelectedItem == "Spanish" ? "spa" : "eng";
+            var lang = "ara+eng";
+            switch (mnuLanguageCombo.SelectedItem)
+            {
+                case "Arabic":
+                    lang = "ara";
+                    break;
+                case "Spanish":
+                    lang = "spa";
+                    break;
+                case "English":
+                    lang = "eng";
+                    break;
+                default:
+                    lang = "ara+eng";
+                    break;
+            }
             var ocr = OcrFactory.GetOcr(mnuEngine.SelectedItem.ToString());
             var result = ocr.Process(image, lang);
             notifyIcon.Visible = true; // hide balloon tip (if any)
