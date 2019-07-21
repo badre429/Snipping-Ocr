@@ -3,25 +3,42 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <RootNamespace>Snipping_OCR</RootNamespace> 
+    <RootNamespace>Snipping_OCR</RootNamespace>
     <AssemblyName>Snipping_OCR</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>edit_find.ico</ApplicationIcon>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <ManifestCertificateThumbprint>42ADF553EE902010BC312D200AE14B5C0CAB1B18</ManifestCertificateThumbprint>
-    <ManifestKeyFile>Snipping OCR_1_TemporaryKey.pfx</ManifestKeyFile>
-    <SignManifests>true</SignManifests>
-    <GenerateManifests>true</GenerateManifests>
+    <!-- <ManifestCertificateThumbprint>42ADF553EE902010BC312D200AE14B5C0CAB1B18</ManifestCertificateThumbprint> -->
+    <!-- <ManifestKeyFile>Snipping OCR_1_TemporaryKey.pfx</ManifestKeyFile> -->
+    <!-- <SignManifests>true</SignManifests> -->
+    <!-- <GenerateManifests>true</GenerateManifests> -->
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishSingleFile>true</PublishSingleFile>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <!-- <PackageReference Include="Newtonsoft.Json" Version="12.0.2" /> -->
     <PackageReference Include="Tesseract" Version="4.1.0" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
 
-    <Content Include="edit_find.ico" />
+
+  <ItemGroup>
+    <Content Include="edit_find.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="tessdata\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+
+    <Content Remove="tessdata\**" />
+    <Compile Remove="tessdata\**" />
+    <EmbeddedResource Remove="tessdata\**" />
+    <None Remove="tessdata\**" /> 
   </ItemGroup>
 </Project>
