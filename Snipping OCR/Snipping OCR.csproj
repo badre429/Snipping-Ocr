@@ -12,7 +12,7 @@
     <!-- <ManifestKeyFile>Snipping OCR_1_TemporaryKey.pfx</ManifestKeyFile> -->
     <!-- <SignManifests>true</SignManifests> -->
     <!-- <GenerateManifests>true</GenerateManifests> -->
-    <PublishTrimmed>true</PublishTrimmed>
+    <!-- <PublishTrimmed>true</PublishTrimmed> -->
     <PublishSingleFile>true</PublishSingleFile>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 

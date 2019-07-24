@@ -24,7 +24,7 @@ namespace Snipping_OCR
             var result = UploadFileAsync(image, language);
             var stringContent = result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-            var response = JsonSerializer.Parse<OCRSpaceResponse>(stringContent); // JsonConvert.DeserializeObject<OCRSpaceResponse>(stringContent);
+            var response = JsonSerializer.Deserialize<OCRSpaceResponse>(stringContent); // JsonConvert.DeserializeObject<OCRSpaceResponse>(stringContent);
             return new OcrResult()
             {
                 Confidence = 1,
