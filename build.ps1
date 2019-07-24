@@ -39,12 +39,10 @@ if (-not ( Test-Path "spa.wordlist")) {
 else {
     Write-Output "*****************           Files Exist *************************"
 }
-Set-Location ..
-dotnet publish -c Release -r win-x64 /p:PublishSingleFile=true 
+ Set-Location ..
+dotnet publish -c Release -r win-x64 /p:PublishSingleFile=true /p:PublishReadyToRun=true 
 Move-Item .\bin\Release\netcoreapp3.0\win-x64\publish\Snipping_OCR.exe ..\deploy\
 Copy-Item .\tessdata ..\deploy\  -Recurse -Force
 Copy-Item .\App.config ..\deploy\   -Force
 Copy-Item .\edit_find.ico ..\deploy\   -Force
-Copy-Item .\bin\Release\netcoreapp3.0\win-x64\x64\ ..\deploy\ -Recurse
-Copy-Item .\bin\Release\netcoreapp3.0\win-x64\x86\ ..\deploy\ -Recurse
 Set-Location ..
